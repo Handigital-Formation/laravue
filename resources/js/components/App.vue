@@ -1,13 +1,15 @@
 <template>
   <div class="container">
-    <!-- Button trigger modal -->
-    <button
-      type="button"
-      class="btn btn-primary"
-      data-toggle="modal"
-      data-target="#ajoutPensee"
-    >Ajouter une pensée</button>
-    <p></p>
+    <div v-if="loggedin">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#ajoutPensee"
+      >Ajouter une pensée</button>
+      <p></p>
+    </div>
 
     <div v-for="pensee in pensees">
       <card :pensee="pensee" :user="user" @deletePensee="deletePensee"></card>
@@ -53,8 +55,8 @@ export default {
     return {
       pensees: [],
       user: 0,
-      texte:'',
-      error:'',
+      texte: "",
+      error: ""
     };
   },
   mounted() {
@@ -66,6 +68,11 @@ export default {
   },
   components: {
     Card
+  },
+  computed: {
+    loggedin() {
+      return this.user != 0;
+    }
   },
   methods: {
     deletePensee(id) {
@@ -79,7 +86,7 @@ export default {
     addPensee() {
       this.resource.save({ text: this.texte }).then(
         response => {
-          $('#ajoutPensee').modal('hide');
+          $("#ajoutPensee").modal("hide");
           this.texte = "";
           this.error = "";
           this.pensees.unshift(response.body);
