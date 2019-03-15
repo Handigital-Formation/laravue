@@ -4,9 +4,13 @@ Simple Laravel + Vue application in relation with the course: https://laravel.si
 # Install
 
 git clone
+
 composer install
+
 Create .env file and add database configuration
+
 php artisan migrate:fresh --seed
+
 php artisan serve
 
 # User
@@ -16,5 +20,7 @@ You can login with any email displayed on the list using the password "password"
 # Develop / Change
 
 npm install
+
 npm run watch
+
 edit files as you wish
