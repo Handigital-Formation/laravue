@@ -21,6 +21,8 @@ You can login with any email displayed on the list using the password "password"
 
 npm install
 
+php artisan serve (if not already running)
+
 npm run watch
 
 edit files as you wish
